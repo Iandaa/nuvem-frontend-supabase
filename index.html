@@ -8,64 +8,65 @@
 
 <body>
 
-  <h1>Cadastro de Produtos</h1>
+  <div class="container">
 
-  <form id="add-product-form">
+    <h1>Cadastro de Produtos</h1>
 
-    <h2>Adicionar Produto</h2>
+    <form id="add-product-form">
 
-    <label for="name">Nome:</label>
-    <input type="text" id="name" name="name" required>
+      <h2>Adicionar Produto</h2>
 
-    <!-- adicionando descrição -->
-    <label for="description">Descrição:</label>
-    <input type="text" id="description" name="description" required>
+      <label for="name">Nome:</label>
+      <input type="text" id="name" name="name" required>
 
-    <label for="price">Preço:</label>
-    <input type="number" id="price" name="price" required step="0.01">
+      <label for="description">Descrição:</label>
+      <input type="text" id="description" name="description" required>
 
-    <button type="submit">Adicionar</button>
+      <label for="price">Preço:</label>
+      <input type="number" id="price" name="price" required step="0.01">
 
-  </form>
+      <button type="submit">Adicionar</button>
 
-  <!-- consulta por id -->
-  <form id="search-product-form">
+    </form>
 
-    <h2>Buscar Produto por ID</h2>
+    <form id="search-product-form">
 
-    <label for="search-id">ID do Produto:</label>
-    <input type="number" id="search-id" required>
+      <h2>Buscar Produto por ID</h2>
 
-    <button type="submit">Buscar</button>
+      <label for="search-id">ID do Produto:</label>
+      <input type="number" id="search-id" required>
 
-  </form>
+      <button type="submit">Buscar</button>
 
-  <div id="search-result"></div>
+    </form>
 
-  <!-- formulário de update -->
-  <form id="update-product-form">
+    <div id="search-result"></div>
 
-    <h2>Atualizar Produto</h2>
+    <form id="update-product-form">
 
-    <input type="hidden" id="update-id">
+      <h2>Atualizar Produto</h2>
 
-    <label for="update-name">Nome:</label>
-    <input type="text" id="update-name" required>
+      <input type="hidden" id="update-id">
 
-    <!-- adicionando descrição -->
-    <label for="update-description">Descrição:</label>
-    <input type="text" id="update-description" required>
+      <label for="update-name">Nome:</label>
+      <input type="text" id="update-name" required>
 
-    <label for="update-price">Preço:</label>
-    <input type="number" id="update-price" required step="0.01">
+      <label for="update-description">Descrição:</label>
+      <input type="text" id="update-description" required>
 
-    <button type="submit">Atualizar Produto</button>
+      <label for="update-price">Preço:</label>
+      <input type="number" id="update-price" required step="0.01">
 
-  </form>
+      <button type="submit">Atualizar Produto</button>
 
-  <ul id="products"></ul>
+    </form>
 
-  <script src="app.js"></script>
+    <div class="list-container">
+      <h2>Produtos Cadastrados</h2>
+      <ul id="products"></ul>
+    </div>
+
+  </div> <script src="app.js"></script>
 
   <script>
     window.addEventListener('load', fetchProducts);
