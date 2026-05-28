@@ -1,13 +1,12 @@
-/* Reset e Variáveis de Cores Sóbrias */
+/* Variáveis de Cores Sóbrias e Profissionais */
 :root {
   --bg-primary: #f8fafc;
   --bg-card: #ffffff;
   --text-main: #1e293b;
   --text-muted: #64748b;
   --border-color: #e2e8f0;
-  --primary: #0f172a; /* Azul escuro/Grafite bem sóbrio */
-  --primary-hover: #334155;
-  --success: #10b981; /* Verde esmeralda mais moderno */
+  --primary: #0f172a; /* Azul-escuro/Grafite sóbrio */
+  --primary-hover: #1e293b;
   --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
 }
 
@@ -22,14 +21,14 @@ body {
   align-items: center;
 }
 
-/* Container para centralizar e limitar a largura máxima do sistema */
+/* Alinhamento do layout */
 .container {
   width: 100%;
-  max-width: 800px;
+  max-width: 700px; /* Largura ideal para não esticar os campos */
 }
 
 h1 {
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 700;
   color: var(--primary);
   margin-bottom: 30px;
@@ -37,15 +36,14 @@ h1 {
 }
 
 h2 {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--primary);
   margin-top: 0;
   margin-bottom: 20px;
-  text-align: left;
 }
 
-/* Formulários Profissionais */
+/* Formulários */
 form {
   background-color: var(--bg-card);
   padding: 24px;
@@ -53,12 +51,12 @@ form {
   box-shadow: var(--shadow);
   border: 1px solid var(--border-color);
   margin-bottom: 24px;
-  text-align: left; /* Alinhamento à esquerda melhora muito a leitura */
+  text-align: left; /* Alinhado à esquerda para leitura profissional */
 }
 
 label {
   display: block;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   color: var(--text-muted);
   margin-bottom: 6px;
@@ -82,13 +80,11 @@ input[type="text"]:focus,
 input[type="number"]:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.1);
+  box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.08);
 }
 
-/* Botões Modernos */
-button, 
-input[type="submit"] {
-  display: inline-block;
+/* Botões */
+button {
   background-color: var(--primary);
   color: #ffffff;
   border: none;
@@ -98,23 +94,58 @@ input[type="submit"] {
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s;
-  width: auto;
 }
 
-button:hover,
-input[type="submit"]:hover {
+button:hover {
   background-color: var(--primary-hover);
 }
 
-/* Se você usar um botão verde de sucesso, adicione a classe .btn-success */
-.btn-success {
-  background-color: var(--success);
-}
-.btn-success:hover {
-  background-color: #059669;
+/* Seus resultados de busca individuais */
+#search-result {
+  margin-bottom: 24px;
 }
 
-/* Ajuste para inputs de número */
+/* --- ESTILIZAÇÃO DA LISTA DE PRODUTOS DINÂMICA --- */
+.list-container {
+  background-color: var(--bg-card);
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  text-align: left;
+}
+
+ul#products {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Cada item inserido pelo JS se transformará em uma linha elegante */
+ul#products li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-color);
+  background-color: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  margin: 0;
+}
+
+ul#products li:last-child {
+  border-bottom: none;
+}
+
+/* Caso o seu JS coloque botões de excluir/editar dentro do li */
+ul#products li button {
+  padding: 6px 12px;
+  font-size: 12px;
+  margin-left: 8px;
+}
+
+/* Remove as setas padrões do input de número */
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -123,44 +154,3 @@ input[type="number"]::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
-
-/* --- ESTILIZAÇÃO PARA EXIBIR OS PRODUTOS --- */
-/* Em vez de usar UL/LI que ficam estranhos para dados, recomendo usar uma Tabela (Table) no HTML */
-.table-container {
-  background-color: var(--bg-card);
-  border-radius: 8px;
-  box-shadow: var(--shadow);
-  border: 1px solid var(--border-color);
-  overflow: hidden;
-  margin-top: 24px;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
-  font-size: 14px;
-}
-
-th {
-  background-color: #f1f5f9;
-  color: var(--text-muted);
-  font-weight: 600;
-  padding: 12px 16px;
-  border-bottom: 1px solid var(--border-color);
-}
-
-td {
-  padding: 12px 16px;
-  border-bottom: 1px solid var(--border-color);
-  color: var(--text-main);
-}
-
-tr:last-child td {
-  border-bottom: none;
-}
-
-tr:hover {
-  background-color: #f8fafc;
-}
-  
