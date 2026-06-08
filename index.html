@@ -32,7 +32,7 @@
       <h2>Buscar Produto por ID</h2>
 
       <label for="search-id">ID do Produto:</label>
-      <input type="number" id="search-id" name="id" required>
+      <input type="number" id="search-id" required>
 
       <button type="submit">Buscar</button>
     </form>
@@ -42,17 +42,17 @@
     <form id="update-product-form">
       <h2>Atualizar Produto</h2>
 
-      <label for="update-id">ID do Produto a Atualizar:</label>
-      <input type="number" id="update-id" name="id" required>
+      <label for="update-id">ID do Produto:</label>
+      <input type="number" id="update-id" required>
 
       <label for="update-name">Nome:</label>
-      <input type="text" id="update-name" name="name" required>
+      <input type="text" id="update-name" required>
 
       <label for="update-description">Descrição:</label>
-      <input type="text" id="update-description" name="description" required>
+      <input type="text" id="update-description" required>
 
       <label for="update-price">Preço:</label>
-      <input type="number" id="update-price" name="price" required step="0.01">
+      <input type="number" id="update-price" required step="0.01">
 
       <button type="submit">Atualizar Produto</button>
     </form>
@@ -62,18 +62,9 @@
       <ul id="products"></ul>
     </div>
 
-  </div>
+  </div> 
 
   <script src="app.js"></script>
-
-  <script>
-    // Garante que a função só roda se o app.js já tiver sido carregado
-    window.addEventListener('load', () => {
-      if (typeof fetchProducts === 'function') {
-        fetchProducts();
-      }
-    });
-  </script>
 
 </body>
 
