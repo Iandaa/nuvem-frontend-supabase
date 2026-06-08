@@ -1,4 +1,6 @@
-/* Variáveis de Cores Sóbrias e Profissionais */
+/* ==========================================================================
+   Variáveis de Cores Sóbrias e Profissionais
+   ========================================================================== */
 :root {
   --bg-primary: #f8fafc;
   --bg-card: #ffffff;
@@ -10,6 +12,9 @@
   --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
 }
 
+/* ==========================================================================
+   Reset e Configurações Gerais
+   ========================================================================== */
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   background-color: var(--bg-primary);
@@ -21,12 +26,13 @@ body {
   align-items: center;
 }
 
-/* Alinhamento do layout */
+/* Alinhamento do layout centralizado */
 .container {
   width: 100%;
   max-width: 700px; /* Largura ideal para não esticar os campos */
 }
 
+/* Elementos de Texto */
 h1 {
   font-size: 26px;
   font-weight: 700;
@@ -43,7 +49,9 @@ h2 {
   margin-bottom: 20px;
 }
 
-/* Formulários */
+/* ==========================================================================
+   Formulários e Inputs
+   ========================================================================== */
 form {
   background-color: var(--bg-card);
   padding: 24px;
@@ -76,6 +84,7 @@ input[type="number"] {
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
+/* Efeito de Clique/Foco nos Inputs */
 input[type="text"]:focus,
 input[type="number"]:focus {
   outline: none;
@@ -83,7 +92,19 @@ input[type="number"]:focus {
   box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.08);
 }
 
-/* Botões */
+/* Remove as setas padrões do input de número (Estética Limpa) */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* ==========================================================================
+   Botões
+   ========================================================================== */
 button {
   background-color: var(--primary);
   color: #ffffff;
@@ -100,12 +121,16 @@ button:hover {
   background-color: var(--primary-hover);
 }
 
-/* Seus resultados de busca individuais */
+/* ==========================================================================
+   Seção de Resultados de Busca e Listagem Dinâmica
+   ========================================================================== */
+
+/* Container onde o JS exibe o produto buscado */
 #search-result {
   margin-bottom: 24px;
 }
 
-/* --- ESTILIZAÇÃO DA LISTA DE PRODUTOS DINÂMICA --- */
+/* Container da lista geral de produtos */
 .list-container {
   background-color: var(--bg-card);
   padding: 24px;
@@ -134,23 +159,14 @@ ul#products li {
   margin: 0;
 }
 
+/* Remove a linha divisória do último item da lista */
 ul#products li:last-child {
   border-bottom: none;
 }
 
-/* Caso o seu JS coloque botões de excluir/editar dentro do li */
+/* Caso o seu JS coloque botões de excluir/editar dentro da lista */
 ul#products li button {
   padding: 6px 12px;
   font-size: 12px;
   margin-left: 8px;
-}
-
-/* Remove as setas padrões do input de número */
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-input[type="number"] {
-  -moz-appearance: textfield;
 }
