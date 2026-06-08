@@ -21,8 +21,9 @@ async function fetchProducts() {
     products.forEach(product => {
       const li = document.createElement('li');
 
+      // CORREÇÃO: Agora o ID do produto é exibido na lista para você saber o que buscar
       li.innerHTML = `
-        <strong>${product.name}</strong>
+        <strong>ID: ${product.id} - ${product.name}</strong>
         <br>
         Description: ${product.description}
         <br>
@@ -116,7 +117,7 @@ updateProductForm.addEventListener('submit', async event => {
   await fetchProducts();
 });
 
-// atualização dos dados do produto — CORRIGIDO: Removido IP 98 e inserido o IP 3.235.128.171
+// atualização dos dados do produto
 async function updateProduct(id, name, description, price) {
   try {
     const response = await fetch(`http://3.235.128.171:3000/products/${id}`, {
@@ -132,7 +133,7 @@ async function updateProduct(id, name, description, price) {
   }
 }
 
-// consulta por id — CORRIGIDO: Removido IP 98 e inserido o IP 3.235.128.171
+// consulta por id — CORRIGIDO para aceitar múltiplos formatos de retorno do back-end
 searchProductForm.addEventListener('submit', async event => {
   event.preventDefault();
 
@@ -142,6 +143,13 @@ searchProductForm.addEventListener('submit', async event => {
     const response = await fetch(`http://3.235.128.171:3000/products/${id}`);
     const product = await response.json();
 
+    // Se o backend retornar uma lista vazia ou nula, já corta aqui
+    if (!product || (Array.isArray(product) && product.length === 0)) {
+      searchResult.innerHTML = `<p>Product not found</p>`;
+      return;
+    }
+
+    // Se for uma lista pega o primeiro índice, caso contrário assume o objeto direto
     const prodData = Array.isArray(product) ? product[0] : product;
 
     if (prodData && prodData.name) {
@@ -155,6 +163,7 @@ searchProductForm.addEventListener('submit', async event => {
       searchResult.innerHTML = `<p>Product not found</p>`;
     }
   } catch (error) {
+    console.error("Erro na busca por ID:", error);
     searchResult.innerHTML = `<p>Product not found</p>`;
   }
 });
