@@ -22,7 +22,7 @@ const searchResult = document.querySelector('#search-result');
 // Function to fetch all products from the server
 async function fetchProducts() {
 
-  const response = await fetch('http://98.92.62.120:3000/products');
+  const response = await fetch('http://3.235.128.171:3000/products');
 
   const products = await response.json();
 
@@ -110,7 +110,7 @@ addProductForm.addEventListener('submit', async event => {
 // Function to add a new product
 async function addProduct(name, description, price) {
 
-  const response = await fetch('http://98.92.62.120:3000/products', {
+  const response = await fetch('http://3.235.128.171:3000/products', {
 
     method: 'POST',
 
@@ -135,7 +135,7 @@ async function addProduct(name, description, price) {
 // Function to delete a product
 async function deleteProduct(id) {
 
-  const response = await fetch('http://98.92.62.120:3000/products/' + id, {
+  const response = await fetch('http://3.235.128.171:3000/products/' + id, {
 
     method: 'DELETE',
 
