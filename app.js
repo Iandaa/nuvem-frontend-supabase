@@ -65,7 +65,6 @@ addProductForm.addEventListener('submit', async event => {
   const description = addProductForm.elements['description'].value;
   const price = addProductForm.elements['price'].value;
 
-  // Executa o cadastro e força a atualização da tela logo em seguida de forma segura
   await addProduct(name, description, price);
   addProductForm.reset();
   await fetchProducts();
@@ -84,9 +83,7 @@ async function addProduct(name, description, price) {
     
     return await response.json();
   } catch (e) {
-    // Se der qualquer erro na leitura do retorno do JSON, o catch absorve 
-    // e não deixa o formulário travar o fluxo da página
-    console.log("Produto enviado com sucesso!");
+    console.log("Processando resposta do produto...");
   }
 }
 
@@ -119,10 +116,10 @@ updateProductForm.addEventListener('submit', async event => {
   await fetchProducts();
 });
 
-// atualização dos dados do produto
+// atualização dos dados do produto — CORRIGIDO: Removido IP 98 e inserido o IP 3.235.128.171
 async function updateProduct(id, name, description, price) {
   try {
-    const response = await fetch(`http://98.92.62.120:3000/products/${id}`, {
+    const response = await fetch(`http://3.235.128.171:3000/products/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
@@ -135,18 +132,16 @@ async function updateProduct(id, name, description, price) {
   }
 }
 
-// consulta por id
+// consulta por id — CORRIGIDO: Removido IP 98 e inserido o IP 3.235.128.171
 searchProductForm.addEventListener('submit', async event => {
   event.preventDefault();
 
   const id = document.querySelector('#search-id').value;
 
   try {
-    const response = await fetch(`http://98.92.62.120:3000/products/${id}`);
+    const response = await fetch(`http://3.235.128.171:3000/products/${id}`);
     const product = await response.json();
 
-    // Como vimos que o seu banco retorna os dados dentro de um Array [ ],
-    // ajustamos aqui para ler a primeira posição [0] corretamente sem quebrar
     const prodData = Array.isArray(product) ? product[0] : product;
 
     if (prodData && prodData.name) {
